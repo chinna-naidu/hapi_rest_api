@@ -61,5 +61,23 @@ module.exports = {
       },
       handler: PostController.deletePost,
     });
+
+    server.route({
+      method: "GET",
+      path: "/user/post/{id}",
+      // options: {
+      //   auth: "jwt_auth",
+      // },
+      handler: PostController.getPostsOfUser,
+    });
+
+    server.route({
+      method: "GET",
+      path: "/user/post",
+      // options: {
+      //   auth: "jwt_auth",
+      // },
+      handler: PostController.getUsersWithPosts,
+    });
   },
 };

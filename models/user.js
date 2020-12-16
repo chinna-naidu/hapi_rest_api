@@ -9,6 +9,20 @@ class User extends Model {
 
   static idColumn = "id";
 
+  static jsonSchema = {
+    type: "Object",
+    required: ["name", "email", "password"],
+
+    properties: {
+      id: { type: "integer" },
+      name: { type: "string" },
+      email: { type: "string" },
+      password: { type: "string" },
+      created_at: { type: "date" },
+      updated_at: { type: "date" },
+    },
+  };
+
   static relationMappings = {
     posts: {
       relation: Model.HasManyRelation,

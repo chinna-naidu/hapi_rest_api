@@ -28,6 +28,17 @@ exports.createPost = async (request, h) => {
   return h.response(post).code(200);
 };
 
+exports.getUsersWithPosts = async (request, h) => {
+  const posts = await User.query().withGraphFetched("posts");
+  return posts;
+};
+
+exports.getPostsOfUser = async (request, h) => {
+  const pid = +request.params.id;
+  const post = await User.query().findById(pid).withGraphFetched("posts");
+  return post;
+};
+
 exports.getAllPosts = async (request, h) => {
   const posts = await Post.query();
   return h.response(posts).code(200);
